@@ -28,20 +28,20 @@ export default function EditItemsForms() {
       end: moment(formData.date).hour(23).minute(59).second(59).valueOf(),
     };
 
-    let uniqueSet = new Set(itemsState.items.map(obj => JSON.stringify(obj)));
-    const updateItems = (item,items)=>{
-      items.forEach(element => {
+    let uniqueSet = new Set(itemsState.items.map((obj) => JSON.stringify(obj)));
+    const updateItems = (item, items) => {
+      items.forEach((element) => {
         let parsedItem = JSON.parse(element);
         if (parsedItem.id === item.id) {
-            items.delete(element);
+          items.delete(element);
         }
       });
-      items.add(JSON.stringify(item))
-    }
-    updateItems(item,uniqueSet);
-    const uniqueArray= Array.from(uniqueSet).map(item => JSON.parse(item))
+      items.add(JSON.stringify(item));
+    };
+    updateItems(item, uniqueSet);
+    const uniqueArray = Array.from(uniqueSet).map((item) => JSON.parse(item));
 
-    setItemsState({...itemsState,items : uniqueArray});
+    setItemsState({ ...itemsState, items: uniqueArray });
     setModalState(false);
   };
 
@@ -72,42 +72,6 @@ export default function EditItemsForms() {
             placeholder="Group Number"
             value={formData.group}
           />
-        </div>
-
-        <div className="mb-4 flex flex-row justify-between items-center">
-          <label
-            htmlFor="date-start"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Date Start
-          </label>
-          <input
-            onChange={handleChange}
-            type="date-start"
-            id="date-start"
-            name="date-start"
-            value={new Date(formData.start).toDateString()}
-            className="mt-1 block w-40 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-          </input>
-        </div>
-
-        <div className="mb-4 flex flex-row justify-between items-center">
-          <label
-            htmlFor="date-end"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Date End
-          </label>
-          <input
-            onChange={handleChange}
-            type="date-end"
-            id="date-end"
-            name="date-end"
-            value={new Date(formData.end).toDateString()}
-            className="mt-1 block w-40 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-          </input>
         </div>
 
         <div className="mb-6 flex flex-row justify-between items-center">

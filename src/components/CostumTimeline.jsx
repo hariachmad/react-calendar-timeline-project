@@ -16,6 +16,7 @@ import { ItemsSelectedContext } from "../context/itemsSelectedContext";
 import { useTimelineData } from "../hooks/useTimelineData";
 import { UseSelectedItem } from "../hooks/useSelectedItem";
 import { AddItemsContext } from "../context/addItemsContext";
+import { el } from "@faker-js/faker";
 
 var keys = {
   groupIdKey: "id",
@@ -65,6 +66,8 @@ export default function CostumeTimeline() {
   const { modalState, setModalState } = useContext(ModalContext);
   const { setItemsSelectedState } = useContext(ItemsSelectedContext);
   const [showDay, setShowDay] = useState(true);
+  const [showDayName, setShowDayName] = useState(true);
+  const [showHour,setShowHour] = useState(false);
   const { setAddItemsState } = useContext(AddItemsContext);
 
   useTimelineData();
@@ -120,9 +123,21 @@ export default function CostumeTimeline() {
     <div className="mb-[100px]">
       <Timeline
         onZoom={(timelineContext, unit) => {
-          unit == "month" ? setShowDay(false) : setShowDay(true);
+          // unit == "month" ? setShowDay(false) : setShowDay(true);
+          if(unit == "month"){
+            setShowDay(false)
+            setShowDayName(false)
+            setShowHour(false)
+          }else if(unit == "hour"){
+            setShowDayName(false)
+            setShowDay(true )
+            setShowHour(true)
+          }else if(unit == "day"){
+            setShowDayName(true)
+            setShowDay(true )
+            setShowHour(false)
+          }
         }}
-        
         sidebarWidth={150}
         rightSidebarWidth={70}
         onItemDeselect={handleItemDeselect}
@@ -184,7 +199,8 @@ export default function CostumeTimeline() {
           <DateHeader unit="month"></DateHeader>
 
           {showDay && <DateHeader unit="day"></DateHeader>}
-          {showDay && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
+          {showDayName && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
+          {showHour && <DateHeader unit="hour"></DateHeader>}
         </TimelineHeaders>
       </Timeline>
     </div>
