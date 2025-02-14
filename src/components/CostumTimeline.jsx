@@ -64,7 +64,7 @@ export default function CostumeTimeline() {
   const { scrollState } = useContext(ScrollContext);
   const { modalState, setModalState } = useContext(ModalContext);
   const { setItemsSelectedState } = useContext(ItemsSelectedContext);
-  const [showHour, setShowHour] = useState(true);
+  const [showDay, setShowDay] = useState(true);
   const { setAddItemsState } = useContext(AddItemsContext);
 
   useTimelineData();
@@ -120,7 +120,7 @@ export default function CostumeTimeline() {
     <div className="mb-[100px]">
       <Timeline
         onZoom={(timelineContext, unit) => {
-          unit == "month" ? setShowHour(false) : setShowHour(true);
+          unit == "month" ? setShowDay(false) : setShowDay(true);
         }}
         
         sidebarWidth={150}
@@ -183,8 +183,8 @@ export default function CostumeTimeline() {
           <DateHeader unit="year"></DateHeader>
           <DateHeader unit="month"></DateHeader>
 
-          {showHour && <DateHeader unit="day"></DateHeader>}
-          {showHour && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
+          {showDay && <DateHeader unit="day"></DateHeader>}
+          {showDay && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
         </TimelineHeaders>
       </Timeline>
     </div>
