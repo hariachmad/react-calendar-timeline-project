@@ -117,13 +117,14 @@ export default function CostumeTimeline() {
   if (modalState) return null;
 
   return (
-    <div>
+    <div className="mb-[100px]">
       <Timeline
         onZoom={(timelineContext, unit) => {
           unit == "month" ? setShowHour(false) : setShowHour(true);
         }}
-        sidebarWidth={300}
-        rightSidebarWidth={150}
+        
+        sidebarWidth={150}
+        rightSidebarWidth={70}
         onItemDeselect={handleItemDeselect}
         onItemSelect={handleItemSelect}
         onItemDoubleClick={handleItemDoubleClick}
@@ -183,6 +184,7 @@ export default function CostumeTimeline() {
           <DateHeader unit="month"></DateHeader>
 
           {showHour && <DateHeader unit="day"></DateHeader>}
+          {showHour && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
         </TimelineHeaders>
       </Timeline>
     </div>

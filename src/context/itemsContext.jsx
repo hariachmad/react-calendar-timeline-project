@@ -36,6 +36,96 @@ const groups = [
     rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
+  {
+    id: 6,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 7,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 8,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 9,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 10,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 11,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 12,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 13,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 14,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 15,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 16,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 17,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 18,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 19,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
+  {
+    id: 20,
+    title: faker.vehicle.manufacturer(),
+    rightTitle: faker.person.firstName(),
+    bgColor: "white",
+  },
 ];
 
 const items = [
