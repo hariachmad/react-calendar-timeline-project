@@ -8,32 +8,32 @@ export const ItemsContext = createContext();
 const groups = [
   {
     id: 1,
-    title: "Machine1",
-    rightTitle: faker.internet.domainName(),
+    title: "Bubut Ruby",
+    rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
   {
     id: 2,
-    title: "Machine2",
-    rightTitle: faker.internet.domainName(),
+    title: "Bubut Yamazaki",
+    rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
   {
     id: 3,
-    title: "Machine3",
-    rightTitle: faker.internet.domainName(),
+    title: "Bubut Niles",
+    rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
   {
     id: 4,
-    title: "Machine4",
-    rightTitle: faker.internet.domainName(),
+    title: "Bubut VEB",
+    rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
   {
     id: 5,
-    title: "Machine5",
-    rightTitle: faker.internet.domainName(),
+    title: "Crane 3 konecrane 40/5 t (A)",
+    rightTitle: faker.person.firstName(),
     bgColor: "white",
   },
 ];

@@ -58,21 +58,6 @@ const handleItemMove = (
   console.log("Moved", itemId, dragTime, newGroupOrder);
 };
 
-const CustomSidebarContent = ({ group }) => {
-  return (
-    <div
-      style={{
-        padding: "10px",
-        background: "#f0f0f0",
-        borderRight: "1px solid #ddd",
-      }}
-    >
-      <strong>{group.title}</strong>
-      <p>ID: {group.id}</p>
-    </div>
-  );
-};
-
 export default function CostumeTimeline() {
   const { itemsState, setItemsState } = useContext(ItemsContext);
   const [timelineKey, setTimelineKey] = useState(0);
@@ -137,7 +122,8 @@ export default function CostumeTimeline() {
         onZoom={(timelineContext, unit) => {
           unit == "month" ? setShowHour(false) : setShowHour(true);
         }}
-        sidebarWidth={200}
+        sidebarWidth={300}
+        rightSidebarWidth={150}
         onItemDeselect={handleItemDeselect}
         onItemSelect={handleItemSelect}
         onItemDoubleClick={handleItemDoubleClick}
@@ -178,6 +164,20 @@ export default function CostumeTimeline() {
               );
             }}
           </SidebarHeader>
+
+          <SidebarHeader variant="right">
+            {({ getRootProps }) => {
+              return (
+                <div
+                  {...getRootProps()}
+                  className="flex  flex-row justify-center items-center"
+                >
+                  PIC
+                </div>
+              );
+            }}
+          </SidebarHeader>
+
 
           <DateHeader unit="year"></DateHeader>
           <DateHeader unit="month"></DateHeader>
