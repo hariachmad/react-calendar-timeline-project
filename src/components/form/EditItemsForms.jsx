@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ItemsContext } from "../../context/itemsContext";
 import moment from "moment";
 import { ModalContext } from "../../context/modalContext";
@@ -24,8 +24,8 @@ export default function EditItemsForms() {
       id: formData.id,
       group: formData.group,
       title: formData.title,
-      start: moment(formData.date).hour(0).minute(0).second(1).valueOf(),
-      end: moment(formData.date).hour(23).minute(59).second(59).valueOf(),
+      start: moment(formData.start).hour(0).minute(0).second(1).valueOf(),
+      end: moment(formData.end).hour(23).minute(59).second(59).valueOf(),
     };
 
     let uniqueSet = new Set(itemsState.items.map((obj) => JSON.stringify(obj)));
@@ -63,15 +63,35 @@ export default function EditItemsForms() {
           >
             Group :
           </label>
-          <input
-            onChange={handleChange}
-            type="text"
-            id="group"
+
+          <select
+            id="selectGroup"
             name="group"
+            onChange={handleChange}
             className="mt-1 block w-40 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Group Number"
-            value={formData.group}
-          />
+          >
+            {
+              itemsState.groups.map((group)=>{
+                console.log("group.id: ",group.id)
+                console.log("selected group: ",selectedItem[0].group)
+              })
+            }
+            {itemsState.groups.map((group, index) =>
+              group.id == selectedItem[0].group ? (
+                <>
+                  <option key={index} value={group.id} selected>
+                    {group.title}
+                  </option>
+                </>
+              ) : (
+                <>
+                  <option key={index} value={group.id}>
+                    {group.title}
+                  </option>
+                </>
+              )
+            )}
+          </select>
         </div>
 
         <div className="mb-6 flex flex-row justify-between items-center">

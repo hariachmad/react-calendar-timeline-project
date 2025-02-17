@@ -7,6 +7,7 @@ import { ModalContext } from "../../context/modalContext";
 import { ItemsSelectedContext } from "../../context/itemsSelectedContext";
 import { UseSelectedItem } from "../../hooks/useSelectedItem";
 import { AddItemsContext } from "../../context/addItemsContext";
+import { faker } from "@faker-js/faker";
 
 export default function Button() {
   const { itemsState, setItemsState } = useContext(ItemsContext);
@@ -43,7 +44,6 @@ export default function Button() {
   };
 
   const handlePreviousButton = () => {
-    console.log("Click");
     const previousMonth = [
       moment(itemsState.defaultTimeStart)
         .add(-1, "month")
@@ -82,7 +82,32 @@ export default function Button() {
     });
     setItemsState({ ...itemsState, items: filteredItemsState });
   };
+  
+  const handleFinishButton=()=>{
+    const targetItems = itemsState.items.filter((item) => {
+      return item.id == itemsSelectedState;
+    });
+    
+    const targetItem= {...targetItems[0], canMove: false,
+      canResize: false,
+      itemProps: {
+        "data-tip": faker.hacker.phrase(),
+        style: {
+          backgroundColor : "green",
+          color : "black",
+          fontSize : 10
+        },
+      },
+    }
 
+    const filteredItems = itemsState.items.filter((item) => {
+      return item.id != itemsSelectedState;
+    });
+
+    setItemsState({...itemsState,items: [...filteredItems,targetItem]})
+
+
+  }
   // const handleEditButton = () => {
   //   const selectedItem = UseSelectedItem();
 
@@ -90,16 +115,16 @@ export default function Button() {
 
   return (
     <>
-      <div className="flex flex-column justify-center mt-2.5 gap-5">
+      <div className="flex flex-column justify-around">
         <button onClick={handleAddItemsButton} id="addItems">
           Add Item
         </button>
         <button onClick={handlePreviousButton} id="next">
           Previous Month
         </button>
-        <button onClick={handleScrollButton} id="scroll">
+        {/* <button onClick={handleScrollButton} id="scroll">
           Scroll
-        </button>
+        </button> */}
         <button onClick={handleNextButton} id="previous">
           Next Month
         </button>
@@ -107,6 +132,7 @@ export default function Button() {
           Delete
         </button>
         <button onClick={handleEditItemsButton} id="edit">Edit</button>
+        <button onClick={handleFinishButton} id="finish">Finish</button>
       </div>
     </>
   );

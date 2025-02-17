@@ -16,7 +16,6 @@ import { ItemsSelectedContext } from "../context/itemsSelectedContext";
 import { useTimelineData } from "../hooks/useTimelineData";
 import { UseSelectedItem } from "../hooks/useSelectedItem";
 import { AddItemsContext } from "../context/addItemsContext";
-import { el } from "@faker-js/faker";
 
 var keys = {
   groupIdKey: "id",
@@ -55,8 +54,6 @@ const handleItemMove = (
         : item
     ),
   });
-
-  console.log("Moved", itemId, dragTime, newGroupOrder);
 };
 
 export default function CostumeTimeline() {
@@ -67,7 +64,7 @@ export default function CostumeTimeline() {
   const { setItemsSelectedState } = useContext(ItemsSelectedContext);
   const [showDay, setShowDay] = useState(true);
   const [showDayName, setShowDayName] = useState(true);
-  const [showHour,setShowHour] = useState(false);
+  const [showHour, setShowHour] = useState(false);
   const { setAddItemsState } = useContext(AddItemsContext);
 
   useTimelineData();
@@ -75,7 +72,6 @@ export default function CostumeTimeline() {
 
   const handleItemSelect = (itemId) => {
     setItemsSelectedState(itemId);
-    console.log(itemsState);
   };
 
   const handleItemDeselect = () => {
@@ -124,18 +120,18 @@ export default function CostumeTimeline() {
       <Timeline
         onZoom={(timelineContext, unit) => {
           // unit == "month" ? setShowDay(false) : setShowDay(true);
-          if(unit == "month"){
-            setShowDay(false)
-            setShowDayName(false)
-            setShowHour(false)
-          }else if(unit == "hour"){
-            setShowDayName(false)
-            setShowDay(true )
-            setShowHour(true)
-          }else if(unit == "day"){
-            setShowDayName(true)
-            setShowDay(true )
-            setShowHour(false)
+          if (unit == "month") {
+            setShowDay(false);
+            setShowDayName(false);
+            setShowHour(false);
+          } else if (unit == "hour") {
+            setShowDayName(false);
+            setShowDay(true);
+            setShowHour(true);
+          } else if (unit == "day") {
+            setShowDayName(true);
+            setShowDay(true);
+            setShowHour(false);
           }
         }}
         sidebarWidth={150}
@@ -194,12 +190,13 @@ export default function CostumeTimeline() {
             }}
           </SidebarHeader>
 
-
           <DateHeader unit="year"></DateHeader>
           <DateHeader unit="month"></DateHeader>
 
           {showDay && <DateHeader unit="day"></DateHeader>}
-          {showDayName && <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>}
+          {showDayName && (
+            <DateHeader unit="day" labelFormat={"ddd"}></DateHeader>
+          )}
           {showHour && <DateHeader unit="hour"></DateHeader>}
         </TimelineHeaders>
       </Timeline>

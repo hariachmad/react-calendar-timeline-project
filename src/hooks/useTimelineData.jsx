@@ -11,7 +11,5 @@ export const useTimelineData = () => {
       end: new Date(item.end),
     };
   });
-
-  console.log(dataTimeline);
   return dataTimeline;
 };
